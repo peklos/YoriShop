@@ -133,7 +133,7 @@
           >
             <div class="mb-4 flex-shrink-0" style="height: 192px">
               <img
-                :src="getImage('cepi')"
+                :src="getImage('accessories')"
                 alt="Аксессуары"
                 class="w-full h-full object-cover"
               />
@@ -155,6 +155,7 @@
                 :src="getImage('givenchy')"
                 alt="GYVENCHI Tee"
                 class="w-full h-64 object-cover mb-4"
+                loading="lazy"
               />
               <p class="text-gray-400">GYVENCHI</p>
               <p class="font-bold mb-2">Футболка "CYBER"</p>
@@ -319,13 +320,7 @@ export default {
 </script>
 
 <style>
-.bg-neon-green {
-  background-color: #39ff14;
-}
 
-.text-neon-green {
-  color: #39ff14;
-}
 
 .text-shadow-not-tailwind {
   text-shadow: 0 0 20px black;

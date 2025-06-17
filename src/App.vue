@@ -27,4 +27,22 @@ export default {
 #app {
   font-family: Inter;
 }
+
+/* Фон всей полосы прокрутки SCROLLBAR справа */
+::-webkit-scrollbar {
+  width: 12px; /* ширина скролла */
+  background-color: black; /* фон скролла */
+}
+
+/* Сам ползунок */
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #571c86;
+}
+
+/* Опционально: при наведении на ползунок */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #7023af; 
+}
+
 </style>
