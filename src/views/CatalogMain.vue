@@ -376,6 +376,9 @@
     <div class="py-16 px-4 bg-gray-800">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-4">ПОЛУЧИ -15% НА ПЕРВЫЙ ЗАКАЗ</h2>
+
+        <TimerSaleVue />
+
         <div class="max-w-md mx-auto">
           <div class="flex flex-col sm:flex-row gap-2">
             <input
@@ -385,6 +388,7 @@
             />
             <button
               class="bg-purple-600 text-white px-6 py-3 font-bold hover:bg-purple-700 transition whitespace-nowrap rounded sm:rounded-l-none"
+              @click="thankYouForYourAttention()"
             >
               ОТПРАВИТЬ
             </button>
@@ -399,6 +403,7 @@
 <script>
 import { useGoodsStore } from "@/stores/goodsStore.js";
 import { useImagesStore } from "@/stores/imagesStore.js";
+import TimerSaleVue from '@/components/TimerSale.vue';
 
 export default {
   name: "CatalogMain",
@@ -408,6 +413,10 @@ export default {
       showMobileFilters: false,
       isMobile: false,
     };
+  },
+
+  components: {
+    TimerSaleVue
   },
 
   mounted() {
@@ -433,6 +442,10 @@ export default {
     },
     checkMobile() {
       this.isMobile = window.innerWidth < 768; // 768px - breakpoint md в Tailwind
+    },
+
+    thankYouForYourAttention() {
+      alert("Спасибо за внимание :)");
     },
   },
 };

@@ -218,18 +218,7 @@
         <h2 class="text-3xl font-bold mb-4">ПОЛУЧИ -15% НА ПЕРВЫЙ ЗАКАЗ</h2>
 
         <!-- Таймер по центру -->
-        <div class="flex justify-center items-center mb-8">
-          <div
-            class="inline-flex items-center bg-black/30 px-4 py-2 rounded-lg"
-          >
-            <span class="font-bold text-xl mr-3"
-              >🔥 До конца акции осталось:</span
-            >
-            <span class="font-mono text-2xl">
-              {{ hours }}:{{ minutes }}:{{ seconds }}
-            </span>
-          </div>
-        </div>
+        <TimerSaleVue />
 
         <div class="max-w-md mx-auto">
           <div class="flex flex-col sm:flex-row gap-2">
@@ -255,63 +244,28 @@
 
 <script>
 import { useImagesStore } from "@/stores/imagesStore.js";
+import TimerSaleVue from '@/components/TimerSale.vue';
 
 export default {
   name: "HomeView",
   data() {
     return {
-      totalSeconds: 4 * 3600 + 26 * 60 + 34, // 4 часа 26 минут 34 секунды
-      timer: null,
+
     };
   },
 
+  components: {
+    TimerSaleVue
+  },
+
   computed: {
-    hours() {
-      return Math.floor(this.totalSeconds / 3600)
-        .toString()
-        .padStart(2, "0");
-    },
-
-    minutes() {
-      return Math.floor((this.totalSeconds % 3600) / 60)
-        .toString()
-        .padStart(2, "0");
-    },
-
-    seconds() {
-      return (this.totalSeconds % 60).toString().padStart(2, "0");
-    },
-
     getImage() {
       const store = useImagesStore();
       return store.getImage;
     },
   },
 
-  mounted() {
-    this.startTimer();
-  },
-
-  beforeUnmount() {
-    clearInterval(this.timer);
-  },
-
   methods: {
-    startTimer() {
-      this.timer = setInterval(() => {
-        if (this.totalSeconds > 0) {
-          this.totalSeconds--;
-        } else {
-          clearInterval(this.timer);
-          this.timerEnded();
-        }
-      }, 1000);
-    },
-
-    timerEnded() {
-      this.thankYouForYourAttention();
-    },
-
     thankYouForYourAttention() {
       alert("Спасибо за внимание :)");
     },
