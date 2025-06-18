@@ -45,4 +45,8 @@ export default {
   background-color: #7023af; 
 }
 
+*:focus {
+  outline: none;
+}
+
 </style>

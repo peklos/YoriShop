@@ -72,172 +72,9 @@
 
       <div class="flex flex-col md:flex-row gap-8">
         <!-- Фильтры (на мобильных скрыт, открывается по кнопке) -->
-        <transition name="slide-fade">
-          <div
-            v-if="showMobileFilters || !isMobile"
-            class="fixed md:static inset-0 md:inset-auto z-50 md:z-auto bg-black md:bg-transparent overflow-y-auto md:overflow-visible"
-          >
-            <div
-              class="md:hidden fixed top-0 left-0 right-0 bg-black p-4 flex justify-between items-center border-b border-gray-800"
-            >
-              <h3 class="text-xl font-bold">ФИЛЬТРЫ</h3>
-              <button @click="showMobileFilters = false" class="text-2xl">
-                &times;
-              </button>
-            </div>
-
-            <div
-              class="bg-gray-900 p-6 rounded-lg md:sticky md:top-4 mt-16 md:mt-0"
-            >
-              <!-- Категории -->
-              <div class="mb-6">
-                <h4 class="font-bold mb-3 text-purple-400">КАТЕГОРИИ</h4>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Худи & Свитшоты</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Футболки</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Кроссовки</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Джоггеры & Карго</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Аксессуары</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Бренды -->
-              <div class="mb-6">
-                <h4 class="font-bold mb-3 text-purple-400">БРЕНДЫ</h4>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Balenciaga</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Vetements</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Yori Sport</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>Givenchy</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>New Balance</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Цена (без стрелочек) -->
-              <div class="mb-6">
-                <h4 class="font-bold mb-3 text-purple-400">ЦЕНА</h4>
-                <div class="flex items-center space-x-4 mb-2">
-                  <input
-                    type="number"
-                    placeholder="От"
-                    class="bg-gray-800 px-3 py-2 w-full rounded"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    pattern="\d*"
-                  />
-                  <span>-</span>
-                  <input
-                    type="number"
-                    placeholder="До"
-                    class="bg-gray-800 px-3 py-2 w-full rounded"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    pattern="\d*"
-                  />
-                </div>
-              </div>
-
-              <!-- Размеры -->
-              <div class="mb-6">
-                <h4 class="font-bold mb-3 text-purple-400">РАЗМЕРЫ</h4>
-                <div class="flex flex-wrap gap-2">
-                  <button
-                    class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
-                  >
-                    XS
-                  </button>
-                  <button
-                    class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
-                  >
-                    S
-                  </button>
-                  <button
-                    class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
-                  >
-                    M
-                  </button>
-                  <button
-                    class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
-                  >
-                    L
-                  </button>
-                  <button
-                    class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
-                  >
-                    XL
-                  </button>
-                  <button
-                    class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
-                  >
-                    XXL
-                  </button>
-                </div>
-              </div>
-
-              <!-- Сезон (без года) -->
-              <div class="mb-6">
-                <h4 class="font-bold mb-3 text-purple-400">СЕЗОН</h4>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>ЗИМА</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>ВЕСНА</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>ЛЕТО</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input type="checkbox" class="mr-2 h-4 w-4" />
-                    <span>ОСЕНЬ</span>
-                  </label>
-                </div>
-              </div>
-
-              <button
-                class="w-full bg-purple-600 hover:bg-purple-700 py-2 rounded font-bold transition"
-              >
-                ПРИМЕНИТЬ ФИЛЬТРЫ
-              </button>
-              <button
-                class="w-full mt-2 bg-gray-700 hover:bg-gray-600 py-2 rounded transition"
-              >
-                СБРОСИТЬ
-              </button>
-            </div>
-          </div>
-        </transition>
+        <Filters 
+        :isVisible="showMobileFilters"
+        @close="showMobileFilters = false"/>
 
         <!-- Основная часть с товарами -->
         <div class="w-full md:w-3/4 lg:w-4/5">
@@ -273,20 +110,25 @@
                   class="w-full h-64 object-cover"
                 />
                 <div
-                v-if="good.discount != null"
+                  v-if="good.discount != null"
                   class="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded text-xs font-bold"
                 >
                   -{{ good.discount }}
                 </div>
               </div>
               <div class="p-4">
-                <p class="text-gray-400 text-sm">{{ good.brand.toUpperCase() }}</p>
+                <p class="text-gray-400 text-sm">
+                  {{ good.brand.toUpperCase() }}
+                </p>
                 <h3 class="font-bold mb-1">{{ good.name }}</h3>
                 <div class="flex items-center mb-2">
-                  <span class="text-purple-500 font-bold mr-2">{{ good.new_price.toLocaleString('ru-RU') }} ₽</span>
-                  <span v-if="good.old_price != null" 
-                  class="text-gray-400 line-through text-sm"
-                    >{{ good.old_price.toLocaleString('ru-RU') }} ₽</span
+                  <span class="text-purple-500 font-bold mr-2"
+                    >{{ good.new_price.toLocaleString("ru-RU") }} ₽</span
+                  >
+                  <span
+                    v-if="good.old_price != null"
+                    class="text-gray-400 line-through text-sm"
+                    >{{ good.old_price.toLocaleString("ru-RU") }} ₽</span
                   >
                 </div>
                 <div class="flex justify-between text-xs text-gray-400 mb-3">
@@ -403,50 +245,38 @@
 <script>
 import { useGoodsStore } from "@/stores/goodsStore.js";
 import { useImagesStore } from "@/stores/imagesStore.js";
-import TimerSaleVue from '@/components/TimerSale.vue';
+import TimerSaleVue from "@/components/TimerSale.vue";
+import Filters from "@/components/CatalogFilters.vue";
 
 export default {
   name: "CatalogMain",
   data() {
     return {
       goodsStore: useGoodsStore(),
-      showMobileFilters: false,
-      isMobile: false,
+      showMobileFilters: false
     };
   },
 
   components: {
-    TimerSaleVue
-  },
-
-  mounted() {
-    this.checkMobile();
-    window.addEventListener("resize", this.checkMobile);
-  },
-
-  beforeUnmount() {
-    window.removeEventListener("resize", this.checkMobile);
+    TimerSaleVue,
+    Filters,
   },
 
   computed: {
     getImage() {
       const store = useImagesStore();
-
       return store.getImage;
     },
   },
 
   methods: {
-    toggleMobileFilters() {
-      this.showMobileFilters = !this.showMobileFilters;
-    },
-    checkMobile() {
-      this.isMobile = window.innerWidth < 768; // 768px - breakpoint md в Tailwind
-    },
-
     thankYouForYourAttention() {
       alert("Спасибо за внимание :)");
     },
+
+    toggleMobileFilters() {
+      this.showMobileFilters = !this.showMobileFilters
+    }
   },
 };
 </script>
@@ -488,14 +318,5 @@ export default {
   }
 }
 
-/* Скрытие стрелок у input[type="number"] */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-input[type="number"] {
-  -moz-appearance: textfield;
-}
 </style>
