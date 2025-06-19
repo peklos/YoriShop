@@ -39,8 +39,8 @@ const menuItems = [
   { path: "/", title: "Главная" },
   { path: "/catalog", title: "Каталог" },
   { path: "/brands", title: "Бренды" },
-  { path: "/about", title: "О нас" },
   { path: "/cart", title: "Корзина" },
+  { path: "/about", title: "О нас" }
 ];
 
 const icons = [

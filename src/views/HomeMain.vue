@@ -1,50 +1,8 @@
 <template>
   <div class="bg-black text-white min-h-screen font-sans">
-    <div class="bg-purple-900 overflow-hidden whitespace-nowrap py-3 relative">
-      <div class="inline-block whitespace-nowrap animate-marquee">
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-      </div>
-      <!-- Дублирующий элемент для бесшовности -->
-      <div
-        class="inline-block whitespace-nowrap animate-marquee2 absolute top-3"
-      >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-        <span class="text-xl font-bold mx-8"
-          >РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% •</span
-        >
-      </div>
-    </div>
+    <!-- Баннер с бегущей строкой -->
+    <BannerOnTop :content="'РАСПРОДАЖА BALENCIAGA • СКИДКИ 50% • '" />
+
     <!-- 1. Hero Section (Главный баннер) -->
     <div
       class="relative h-screen flex items-center justify-center overflow-hidden"
@@ -104,6 +62,7 @@
                 :src="getImage('balenruner')"
                 alt="Кроссовки"
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <p class="font-bold mt-auto">КРОССОВКИ</p>
@@ -120,6 +79,7 @@
                 :src="getImage('jogeri')"
                 alt="Джоггеры"
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <p class="font-bold mt-auto">КАРГО & ДЖОГГЕРЫ</p>
@@ -136,6 +96,7 @@
                 :src="getImage('accessories')"
                 alt="Аксессуары"
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <p class="font-bold mt-auto">АКСЕССУАРЫ</p>
@@ -169,6 +130,7 @@
                 :src="getImage('9060')"
                 alt="New Balance 9060"
                 class="w-full h-64 object-cover mb-4"
+                loading="lazy"
               />
               <p class="text-gray-400">NEW BALANCE</p>
               <p class="font-bold mb-2">9060 Black</p>
@@ -182,6 +144,7 @@
                 :src="getImage('yorihoodie')"
                 alt="Yori Sport Zip Hoodie"
                 class="w-full h-64 object-cover mb-4"
+                loading="lazy"
               />
               <p class="text-gray-400">YORI SPORT</p>
               <p class="font-bold mb-2">Зип-худи "MAINLANE"</p>
@@ -201,6 +164,7 @@
           :src="getImage('vetmotnf')"
           alt="Vetements x TNF"
           class="w-full max-w-2xl mx-auto mb-8"
+          loading="lazy"
         />
         <router-link to="/catalog"
           ><button
@@ -213,49 +177,24 @@
     </div>
 
     <!-- 5. Подписка -->
-    <div class="py-16 px-4 bg-gray-800">
-      <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-4">ПОЛУЧИ -15% НА ПЕРВЫЙ ЗАКАЗ</h2>
-
-        <!-- Таймер по центру -->
-        <TimerSaleVue />
-
-        <div class="max-w-md mx-auto">
-          <div class="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="Твой email"
-              class="flex-grow px-4 py-3 bg-gray-700 text-white border-none focus:outline-none rounded sm:rounded-r-none"
-            />
-            <button
-              class="bg-purple-600 text-white px-6 py-3 font-bold hover:bg-purple-700 transition whitespace-nowrap rounded sm:rounded-l-none"
-              @click="thankYouForYourAttention()"
-            >
-              ОТПРАВИТЬ
-            </button>
-          </div>
-        </div>
-
-        <p class="mt-5 text-gray-300">Оставь почту и скидка придёт на email</p>
-      </div>
-    </div>
+    <EmailSubscribeVue />
   </div>
 </template>
 
 <script>
+import BannerOnTop from "@/components/BannerWithRunningLine.vue";
 import { useImagesStore } from "@/stores/imagesStore.js";
-import TimerSaleVue from '@/components/TimerSale.vue';
+import EmailSubscribeVue from "@/components/EmailSubscribe.vue";
 
 export default {
   name: "HomeView",
   data() {
-    return {
-
-    };
+    return {};
   },
 
   components: {
-    TimerSaleVue
+    EmailSubscribeVue,
+    BannerOnTop,
   },
 
   computed: {
@@ -274,8 +213,6 @@ export default {
 </script>
 
 <style>
-
-
 .text-shadow-not-tailwind {
   text-shadow: 0 0 20px black;
 }

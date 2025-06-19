@@ -15,6 +15,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 14990,
         new_price: 9990,
         discount: "33%",
+        purchases: 427,
       },
       {
         id: 2,
@@ -27,6 +28,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 34990,
         discount: null,
+        purchases: 158,
       },
       {
         id: 3,
@@ -39,6 +41,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 7990,
         new_price: 5990,
         discount: "25%",
+        purchases: 892,
       },
       {
         id: 4,
@@ -51,6 +54,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 12990,
         discount: null,
+        purchases: 341,
       },
       {
         id: 5,
@@ -63,6 +67,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 89990,
         new_price: 62990,
         discount: "30%",
+        purchases: 76,
       },
       {
         id: 6,
@@ -75,6 +80,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 75990,
         new_price: 44990,
         discount: "41%",
+        purchases: 523,
       },
       {
         id: 7,
@@ -87,6 +93,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 59990,
         discount: null,
+        purchases: 289,
       },
       {
         id: 8,
@@ -94,11 +101,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Prada Saffiano Belt",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
-        season: "круглогодичный",
+        size: "ALL",
+        season: "ВСЕ",
         old_price: 45990,
         new_price: 31990,
         discount: "30%",
+        purchases: 645,
       },
       {
         id: 9,
@@ -111,6 +119,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 8990,
         new_price: 6290,
         discount: "30%",
+        purchases: 712,
       },
       {
         id: 10,
@@ -123,6 +132,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 89990,
         discount: null,
+        purchases: 94,
       },
       {
         id: 11,
@@ -135,6 +145,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 65990,
         new_price: 42990,
         discount: "35%",
+        purchases: 378,
       },
       {
         id: 12,
@@ -142,11 +153,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Vetements Metal Logo Cap",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "лето",
         old_price: null,
         new_price: 21990,
         discount: null,
+        purchases: 567,
       },
       {
         id: 13,
@@ -159,6 +171,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 129990,
         new_price: 77990,
         discount: "40%",
+        purchases: 203,
       },
       {
         id: 14,
@@ -166,11 +179,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Prada Nylon Backpack",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
-        season: "круглогодичный",
+        size: "ALL",
+        season: "ВСЕ",
         old_price: null,
         new_price: 89990,
         discount: null,
+        purchases: 431,
       },
       {
         id: 15,
@@ -183,6 +197,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 12990,
         new_price: 8990,
         discount: "31%",
+        purchases: 876,
       },
       {
         id: 16,
@@ -195,6 +210,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 45990,
         new_price: 31990,
         discount: "30%",
+        purchases: 512,
       },
       {
         id: 17,
@@ -207,6 +223,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 24990,
         discount: null,
+        purchases: 189,
       },
       {
         id: 18,
@@ -219,6 +236,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 32990,
         new_price: 22990,
         discount: "30%",
+        purchases: 723,
       },
       {
         id: 19,
@@ -226,11 +244,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Balenciaga Logo Socks",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
-        season: "круглогодичный",
+        size: "ALL",
+        season: "ВСЕ",
         old_price: null,
         new_price: 8990,
         discount: null,
+        purchases: 954,
       },
       {
         id: 20,
@@ -238,11 +257,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Prada Sunglasses",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "лето",
         old_price: 45990,
         new_price: 31990,
         discount: "30%",
+        purchases: 267,
       },
       {
         id: 21,
@@ -250,11 +270,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Off-White Industrial Belt",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
-        season: "круглогодичный",
+        size: "ALL",
+        season: "ВСЕ",
         old_price: 21990,
         new_price: 14990,
         discount: "32%",
+        purchases: 598,
       },
       {
         id: 22,
@@ -267,6 +288,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 89990,
         new_price: 69990,
         discount: "22%",
+        purchases: 345,
       },
       {
         id: 23,
@@ -279,6 +301,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 59990,
         new_price: 44990,
         discount: "25%",
+        purchases: 176,
       },
       {
         id: 24,
@@ -286,11 +309,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Burberry Check Scarf",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "зима",
         old_price: null,
         new_price: 39990,
         discount: null,
+        purchases: 812,
       },
       {
         id: 25,
@@ -303,6 +327,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 119990,
         new_price: 83990,
         discount: "30%",
+        purchases: 129,
       },
       {
         id: 26,
@@ -315,6 +340,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 39990,
         new_price: 29990,
         discount: "25%",
+        purchases: 482,
       },
       {
         id: 27,
@@ -327,6 +353,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 11990,
         discount: null,
+        purchases: 735,
       },
       {
         id: 29,
@@ -339,6 +366,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 32990,
         new_price: 22990,
         discount: "30%",
+        purchases: 218,
       },
       {
         id: 30,
@@ -346,11 +374,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Acne Studios Beanie",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "зима",
         old_price: 14990,
         new_price: 9990,
         discount: "33%",
+        purchases: 876,
       },
       {
         id: 31,
@@ -363,6 +392,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 89990,
         new_price: 62990,
         discount: "30%",
+        purchases: 143,
       },
       {
         id: 32,
@@ -375,6 +405,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 109990,
         new_price: 76990,
         discount: "30%",
+        purchases: 592,
       },
       {
         id: 33,
@@ -382,11 +413,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "McQueen Skull Scarf",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "осень",
         old_price: 29990,
         new_price: 20990,
         discount: "30%",
+        purchases: 354,
       },
       {
         id: 34,
@@ -399,6 +431,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 27990,
         discount: null,
+        purchases: 671,
       },
       {
         id: 35,
@@ -406,11 +439,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Gucci GG Marmont Wallet",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
-        season: "круглогодичный",
+        size: "ALL",
+        season: "ВСЕ",
         old_price: 45990,
         new_price: 31990,
         discount: "30%",
+        purchases: 429,
       },
       {
         id: 36,
@@ -418,11 +452,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Loewe Puzzle Bag",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "лето",
         old_price: 159990,
         new_price: 111990,
         discount: "30%",
+        purchases: 287,
       },
       {
         id: 37,
@@ -435,6 +470,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 139990,
         discount: null,
+        purchases: 95,
       },
       {
         id: 38,
@@ -447,6 +483,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 32990,
         new_price: 22990,
         discount: "30%",
+        purchases: 512,
       },
       {
         id: 39,
@@ -459,6 +496,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 41990,
         new_price: 29990,
         discount: "29%",
+        purchases: 648,
       },
       {
         id: 40,
@@ -471,6 +509,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 18990,
         new_price: 12990,
         discount: "32%",
+        purchases: 321,
       },
       {
         id: 42,
@@ -478,11 +517,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Heron Preston Logo Cap",
         img: "accessories",
         category: "Аксессуары",
-        size: "универсальный",
+        size: "ALL",
         season: "лето",
         old_price: null,
         new_price: 14990,
         discount: null,
+        purchases: 784,
       },
       {
         id: 43,
@@ -495,6 +535,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 39990,
         new_price: 27990,
         discount: "30%",
+        purchases: 237,
       },
       {
         id: 45,
@@ -502,11 +543,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Celine Leather Jacket",
         img: "jacket",
         category: "Верх",
-        size: "M",
+        size: "XS",
         season: "осень",
         old_price: 179990,
         new_price: 125990,
         discount: "30%",
+        purchases: 156,
       },
       {
         id: 46,
@@ -519,6 +561,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 79990,
         new_price: 55990,
         discount: "30%",
+        purchases: 423,
       },
       {
         id: 47,
@@ -526,11 +569,12 @@ export const useGoodsStore = defineStore("goods", {
         name: "Off-White Diag Hoodie",
         img: "hoodie",
         category: "Верх",
-        size: "XL",
+        size: "XXL",
         season: "зима",
         old_price: 74990,
         new_price: 52990,
         discount: "29%",
+        purchases: 567,
       },
       {
         id: 48,
@@ -543,6 +587,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: null,
         new_price: 49990,
         discount: null,
+        purchases: 892,
       },
       {
         id: 49,
@@ -555,6 +600,7 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 139990,
         new_price: 97990,
         discount: "30%",
+        purchases: 134,
       },
       {
         id: 50,
@@ -567,34 +613,81 @@ export const useGoodsStore = defineStore("goods", {
         old_price: 39990,
         new_price: 27990,
         discount: "30%",
+        purchases: 678,
       },
     ],
+
+    activePage: 1,
+    itemsPerPage: 8,
+    sortType: "popularity",
   }),
 
+  actions: {
+    setPage(page) {
+      this.activePage = page;
+    },
+
+    setSortType(sort) {
+      this.sortType = sort;
+      this.activePage = 1;
+    },
+  },
+
   getters: {
-    filteredGoods(state) {
+    sortedGoods(state) {
+      const goodsCopy = [...this.goods];
+
+      switch (state.sortType) {
+        case "price_asc":
+          return goodsCopy.sort((a, b) => a.new_price - b.new_price);
+        case "price_desc":
+          return goodsCopy.sort((a, b) => b.new_price - a.new_price);
+        case "popularity":
+        default:
+          return goodsCopy.sort((a, b) => b.purchases - a.purchases);
+      }
+    },
+
+    paginatedGoods(state) {
+      const start = (state.activePage - 1) * state.itemsPerPage;
+      const end = start + state.itemsPerPage;
+
+      return state.filteredGoods.slice(start, end);
+    },
+
+    totalPages(state) {
+      return Math.ceil(state.filteredGoods.length / state.itemsPerPage);
+    },
+
+    filteredGoods() {
       const filterStore = useFilterStore();
 
-      return state.goods.filter((product) => {
+      return this.sortedGoods.filter((product) => {
         const categoryMatch =
-          filterStore.selectedCategories === 0 ||
+          !filterStore.selectedCategories ||
+          filterStore.selectedCategories.length === 0 ||
           filterStore.selectedCategories.includes(product.category);
 
         const brandMatch =
-          filterStore.selectedBrands === 0 ||
+          !filterStore.selectedBrands ||
+          filterStore.selectedBrands.length === 0 ||
           filterStore.selectedBrands.includes(product.brand);
 
         const sizeMatch =
-          filterStore.selectedSizes === 0 ||
-          filterStore.selectedSizes.includes(product.size);
+          !filterStore.selectedSizes ||
+          filterStore.selectedSizes.length === 0 ||
+          filterStore.selectedSizes.includes(product.size) ||
+          filterStore.selectedSizes.includes("ALL");
 
         const seasonMatch =
-          filterStore.selectedSeasons === 0 ||
-          filterStore.selectedSeasons.includes(product.season);
+          !filterStore.selectedSeasons ||
+          filterStore.selectedSeasons.length === 0 ||
+          filterStore.selectedSeasons.includes(product.season) ||
+          filterStore.selectedSeasons.includes("ВСЕ");
 
         const priceMatch =
-          product.price >= filterStore.priceRange[0] &&
-          product.price <= filterStore.priceRange[1];
+          product.new_price >= filterStore.priceRange[0] &&
+          product.new_price <= filterStore.priceRange[1];
 
         return (
           categoryMatch && brandMatch && sizeMatch && seasonMatch && priceMatch

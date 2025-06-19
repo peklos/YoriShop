@@ -17,11 +17,16 @@
           <h4 class="font-bold mb-3 text-purple-400">КАТЕГОРИИ</h4>
           <div class="space-y-2">
             <label
-              class="flex items-center cursor-pointer"
+              class="flex items-center cursor-pointer select-none"
               v-for="category in categories"
               :key="category"
             >
-              <input type="checkbox" class="mr-2 h-4 w-4" />
+              <input
+                type="checkbox"
+                class="mr-2 h-4 w-4 cursor-pointer"
+                :value="category"
+                v-model="tempFilters.selectedCategories"
+              />
               <span>{{ category }}</span>
             </label>
           </div>
@@ -52,11 +57,13 @@
                 <label
                   v-for="brand in brands"
                   :key="brand"
-                  class="flex items-center cursor-pointer"
+                  class="flex items-center cursor-pointer select-none"
                 >
                   <input
                     type="checkbox"
-                    class="mr-2 h-4 w-4 rounded border-gray-300 text-purple-600"
+                    class="mr-2 h-4 w-4 rounded border-gray-300 text-purple-600 cursor-pointer"
+                    :value="brand.toLowerCase()"
+                    v-model="tempFilters.selectedBrands"
                   />
                   <span>{{ brand }}</span>
                 </label>
@@ -75,6 +82,7 @@
               class="bg-gray-800 px-3 py-2 w-full rounded"
               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
               pattern="\d*"
+              v-model="tempFilters.priceRange[0]"
             />
             <span>-</span>
             <input
@@ -83,6 +91,7 @@
               class="bg-gray-800 px-3 py-2 w-full rounded"
               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
               pattern="\d*"
+              v-model="tempFilters.priceRange[1]"
             />
           </div>
         </div>
@@ -94,7 +103,14 @@
             <button
               v-for="size of sizes"
               :key="size"
-              class="bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded"
+              @click="toggleSize(size)"
+              class="px-3 py-1 rounded transition-all duration-100 ease-in-out"
+              :class="{
+                'bg-purple-700 text-white hover:bg-purple-800':
+                  tempFilters.selectedSizes.includes(size),
+                'bg-gray-800 text-white hover:bg-purple-900':
+                  !tempFilters.selectedSizes.includes(size),
+              }"
             >
               {{ size }}
             </button>
@@ -128,15 +144,15 @@
                 <label
                   v-for="season in seasons"
                   :key="season"
-                  class="flex items-center"
+                  class="flex items-center cursor-pointer select-none"
                 >
                   <input
                     type="checkbox"
-                    class="mr-2 h-4 w-4 rounded border-gray-300 text-purple-600 focus:outline-none focus:ring-0"
+                    class="mr-2 h-4 w-4 rounded border-gray-300 text-purple-600 focus:outline-none focus:ring-0 cursor-pointer select-none"
+                    :value="season.toLowerCase()"
+                    v-model="tempFilters.selectedSeasons"
                   />
-                  <span class="text-white hover:text-purple-500">{{
-                    season
-                  }}</span>
+                  <span class="text-white">{{ season }}</span>
                 </label>
               </div>
             </DisclosurePanel>
@@ -145,11 +161,13 @@
 
         <button
           class="w-full bg-purple-600 hover:bg-purple-700 py-2 rounded font-bold transition"
+          @click="applyFilters"
         >
           ПРИМЕНИТЬ ФИЛЬТРЫ
         </button>
         <button
           class="w-full mt-2 bg-gray-700 hover:bg-gray-600 py-2 rounded transition"
+          @click="resetFilters"
         >
           СБРОСИТЬ
         </button>
@@ -164,7 +182,18 @@ import { useFilterStore } from "@/stores/filterStore";
 
 export default {
   data() {
-    return { showMobileFilters: false, isMobile: false };
+    return {
+      showMobileFilters: false,
+      isMobile: false,
+      filterStore: useFilterStore(),
+      tempFilters: {
+        selectedCategories: [],
+        selectedBrands: [],
+        selectedSizes: [],
+        selectedSeasons: [],
+        priceRange: [1, 150000],
+      },
+    };
   },
 
   props: {
@@ -174,7 +203,7 @@ export default {
     },
   },
 
-  emits: ["close"],
+  emits: ["close", "apply"],
   components: {
     Disclosure,
     DisclosureButton,
@@ -212,8 +241,46 @@ export default {
     toggleMobileFilters() {
       this.showMobileFilters = !this.showMobileFilters;
     },
+
     checkMobile() {
       this.isMobile = window.innerWidth < 768; // 768px - breakpoint md в Tailwind
+    },
+
+    applyFilters() {
+      this.filterStore.selectedCategories = [
+        ...this.tempFilters.selectedCategories,
+      ];
+      this.filterStore.selectedBrands = [...this.tempFilters.selectedBrands];
+      this.filterStore.selectedSizes = [...this.tempFilters.selectedSizes];
+      this.filterStore.selectedSeasons = [...this.tempFilters.selectedSeasons];
+      this.filterStore.priceRange = [...this.tempFilters.priceRange];
+
+      this.$emit("apply");
+      if (this.isMobile) this.$emit("close");
+    },
+
+    resetFilters() {
+      this.filterStore.resetFilters();
+
+      this.tempFilters = {
+        selectedCategories: [],
+        selectedBrands: [],
+        selectedSizes: [],
+        selectedSeasons: [],
+        priceRange: [1, 150000],
+      };
+
+      if (this.isMobile) this.$emit("close")
+    },
+
+    toggleSize(size) {
+      const index = this.tempFilters.selectedSizes.indexOf(size);
+
+      if (index === -1) {
+        this.tempFilters.selectedSizes.push(size);
+      } else {
+        this.tempFilters.selectedSizes.splice(index, 1);
+      }
     },
   },
 };
@@ -229,5 +296,12 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+input {
+  user-select: none;
+  -webkit-user-select: none; /* Для Safari */
+  -moz-user-select: none; /* Для Firefox */
+  -ms-user-select: none; /* Для IE/Edge */
 }
 </style>
