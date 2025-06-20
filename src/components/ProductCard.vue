@@ -1,7 +1,7 @@
 <template>
   <!-- Карточка товара -->
   <div
-    class="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition duration-300"
+    class="bg-gray-900 rounded-lg overflow-hidden cursor-pointer"
   >
     <div class="relative">
       <img

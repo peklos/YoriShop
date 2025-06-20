@@ -4,7 +4,6 @@
     @click="$emit('click')"
   >
     <div class="relative h-48 overflow-hidden">
-      <!-- Заглушка для изображения бренда -->
       <div
         class="absolute inset-0 bg-gray-800 flex items-center justify-center"
       >

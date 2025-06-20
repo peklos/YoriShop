@@ -104,8 +104,7 @@
             </router-link>
           </div>
         </section>
-
-        <!-- Призыв к действию -->
+        
         <div class="mt-20 text-center">
           <h2 class="text-2xl font-bold mb-4">НЕ НАШЛИ СВОЙ БРЕНД?</h2>
           <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
