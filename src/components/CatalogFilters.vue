@@ -179,6 +179,7 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { useFilterStore } from "@/stores/filterStore";
+import { useGoodsStore } from "@/stores/goodsStore";
 
 export default {
   data() {
@@ -186,6 +187,7 @@ export default {
       showMobileFilters: false,
       isMobile: false,
       filterStore: useFilterStore(),
+      goodsStore: useGoodsStore(),
       tempFilters: {
         selectedCategories: [],
         selectedBrands: [],
@@ -213,6 +215,10 @@ export default {
   mounted() {
     this.checkMobile();
     window.addEventListener("resize", this.checkMobile);
+  },
+
+  created() {
+    this.tempFilters.selectedBrands = [...this.filterStore.selectedBrands];
   },
 
   beforeUnmount() {
@@ -255,6 +261,7 @@ export default {
       this.filterStore.selectedSeasons = [...this.tempFilters.selectedSeasons];
       this.filterStore.priceRange = [...this.tempFilters.priceRange];
 
+      this.goodsStore.setPage(1);
       this.$emit("apply");
       if (this.isMobile) this.$emit("close");
     },
@@ -270,7 +277,8 @@ export default {
         priceRange: [1, 150000],
       };
 
-      if (this.isMobile) this.$emit("close")
+      this.goodsStore.setPage(1);
+      if (this.isMobile) this.$emit("close");
     },
 
     toggleSize(size) {

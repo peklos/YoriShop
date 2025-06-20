@@ -629,7 +629,7 @@ export const useGoodsStore = defineStore("goods", {
 
     setSortType(sort) {
       this.sortType = sort;
-      this.activePage = 1;
+      this.setPage(1);
     },
   },
 

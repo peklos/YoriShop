@@ -54,6 +54,31 @@
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
+          <div
+            v-if="goodsStore.paginatedGoods.length == 0"
+            class="col-span-full py-12 flex flex-col items-center justify-center space-y-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-16 w-16 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span class="text-2xl font-medium text-gray-500"
+              >Ничего не найдено</span
+            >
+            <span class="text-gray-400"
+              >Попробуйте изменить параметры поиска</span
+            >
+          </div>
           <!-- Карточка товара -->
           <ProductCardVue
             v-for="good in goodsStore.paginatedGoods"
@@ -66,11 +91,11 @@
         <div class="flex justify-center mt-12" v-if="goodsStore.totalPages > 1">
           <nav class="flex items-center space-x-2">
             <button
-              class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 disabled:bg-gray-900"
+              class="p-1 rounded bg-gray-800 hover:bg-gray-700 disabled:bg-gray-900 w-8 h-8"
               :disabled="goodsStore.activePage === 1"
               @click="goodsStore.setPage(goodsStore.activePage - 1)"
             >
-              &laquo;
+              <img :src="getImage('arrow')" alt="arrow" class="arrow rotate-180">
             </button>
             <button
               class="px-3 py-1 rounded"
@@ -85,11 +110,11 @@
               {{ page }}
             </button>
             <button
-              class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 disabled:bg-gray-900"
+              class="p-1 rounded bg-gray-800 hover:bg-gray-700 disabled:bg-gray-900 w-8 h-8"
               :disabled="goodsStore.activePage === goodsStore.totalPages"
               @click="goodsStore.setPage(goodsStore.activePage + 1)"
             >
-              &raquo;
+              <img :src="getImage('arrow')" alt="arrow" class="arrow">
             </button>
           </nav>
         </div>
@@ -102,6 +127,7 @@
 import Filters from "@/components/CatalogFilters.vue";
 import { useGoodsStore } from "@/stores/goodsStore.js";
 import ProductCardVue from "./ProductCard.vue";
+import {useImagesStore} from '@/stores/imagesStore'
 
 export default {
   data() {
@@ -115,6 +141,13 @@ export default {
   components: {
     Filters,
     ProductCardVue,
+  },
+
+  computed: {
+    getImage() {
+      const imagesStore = useImagesStore();
+      return imagesStore.getImage;
+    }
   },
 
   methods: {
@@ -132,3 +165,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.arrow {
+  filter: invert(1);
+}
+</style>
