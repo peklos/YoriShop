@@ -1,8 +1,6 @@
 <template>
   <!-- Карточка товара -->
-  <div
-    class="bg-gray-900 rounded-lg overflow-hidden cursor-pointer"
-  >
+  <div class="bg-gray-900 rounded-lg overflow-hidden cursor-pointer">
     <div class="relative">
       <img
         :src="getImage(good.img)"
@@ -32,11 +30,11 @@
         >
       </div>
 
-      <span class="text-white text-s"
-          >Покупок: {{ good.purchases }} </span
-        >
+      <span class="text-white text-s">Покупок: {{ good.purchases }} </span>
 
-      <div class="flex justify-between text-xs text-gray-300 mb-3 mt-2 bg-gray-800 p-2 rounded-lg">
+      <div
+        class="flex justify-between text-xs text-gray-300 mb-3 mt-2 bg-gray-800 p-2 rounded-lg"
+      >
         <span>{{ good.season.toUpperCase() }}</span>
         <span class="font-bold">{{ good.size.toUpperCase() }}</span>
         <span>{{ good.category.toUpperCase() }}</span>
@@ -48,8 +46,14 @@
         >
           КУПИТЬ
         </button>
+
         <button
-          class="bg-gray-800 hover:bg-gray-700 p-2 rounded transition flex items-center justify-center"
+          class="p-2 rounded transition flex items-center justify-center button"
+          :class="{
+            'bg-blue-800 hover:bg-blue-700': userStore.isCartInclude(good),
+            'bg-gray-800 hover:bg-gray-700': !userStore.isCartInclude(good),
+          }"
+          @click="userStore.toggleMoveToCard(good)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,8 +70,14 @@
             />
           </svg>
         </button>
+
         <button
-          class="bg-gray-800 hover:bg-gray-700 p-2 rounded transition flex items-center justify-center"
+          class="p-2 rounded transition flex items-center justify-center button"
+          :class="{
+            'bg-red-800 hover:bg-red-700': userStore.isFavInclude(good),
+            'bg-gray-800 hover:bg-gray-700': !userStore.isFavInclude(good),
+          }"
+          @click="userStore.toggleMoveToFavorite(good)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -90,11 +100,14 @@
 </template>
 
 <script>
+import { useUserStore } from "@/stores/userStore.js";
 import { useImagesStore } from "@/stores/imagesStore.js";
 
 export default {
   data() {
-    return {};
+    return {
+      userStore: useUserStore(),
+    };
   },
 
   props: {
@@ -113,3 +126,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.button {
+  transition: 0.1s all;
+}
+
+.button:active {
+  scale: 0.95;
+  transition: 0.1s all;
+}
+</style>
