@@ -33,10 +33,6 @@ import BannerOnTop from "@/components/BannerWithRunningLine.vue";
 
 export default {
   name: "CatalogMain",
-  data() {
-    return {};
-  },
-
   components: {
     EmailSubscribeVue,
     CatalogContent,

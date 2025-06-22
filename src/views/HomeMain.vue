@@ -181,19 +181,26 @@
             alt="Vetements x TNF"
             class="w-full max-w-2xl mx-auto mb-8"
             loading="lazy"
-          />
-          <router-link to="/catalog"
-            ><button
-              class="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition"
-            >
-              ЗАБРОНИРОВАТЬ
-            </button></router-link
+          /><button
+            class="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition"
+            @click="showModal = true"
           >
+            ЗАБРОНИРОВАТЬ
+          </button>
         </div>
       </div>
 
       <!-- 5. Подписка -->
       <EmailSubscribeVue />
+
+      <modalPopupVue
+        v-model="showModal"
+        :product="{ name: 'VETEMENTS × TNF', img: 'vetmotnf', new_price: 49999, brand: 'VETEMENTS, TNF', category: 'Верх', size: 'EXCLUSIVE ALL'}"
+        @success="showSuccessModal = true"
+        @cancel="showModal = false"
+      />
+
+      <modalPopupSuccessVue v-model="showSuccessModal" />
     </div>
   </div>
 </template>
@@ -202,16 +209,23 @@
 import BannerOnTop from "@/components/BannerWithRunningLine.vue";
 import { useImagesStore } from "@/stores/imagesStore.js";
 import EmailSubscribeVue from "@/components/EmailSubscribe.vue";
+import modalPopupVue from "@/components/modalPopup.vue";
+import modalPopupSuccessVue from "@/components/modalPopupSuccess.vue";
 
 export default {
   name: "HomeView",
   data() {
-    return {};
+    return {
+      showModal: false,
+      showSuccessModal: false,
+    };
   },
 
   components: {
     EmailSubscribeVue,
     BannerOnTop,
+    modalPopupVue,
+    modalPopupSuccessVue,
   },
 
   computed: {

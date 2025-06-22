@@ -8,6 +8,7 @@ export const useUserStore = defineStore("user", {
     return {
       cart: savedCart ? JSON.parse(savedCart) : [],
       favorite: savedFav ? JSON.parse(savedFav) : [],
+      purchase: {},
     };
   },
   actions: {

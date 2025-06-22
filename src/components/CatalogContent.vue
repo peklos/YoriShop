@@ -81,9 +81,10 @@
           </div>
           <!-- Карточка товара -->
           <ProductCardVue
-            v-for="good in goodsStore.paginatedGoods"
-            :key="good.id"
-            :good="good"
+            v-for="product in goodsStore.paginatedGoods"
+            :key="product.id"
+            :product="product"
+            @buy="showModal = true"
           />
         </div>
 
@@ -95,7 +96,11 @@
               :disabled="goodsStore.activePage === 1"
               @click="goodsStore.setPage(goodsStore.activePage - 1)"
             >
-              <img :src="getImage('arrow')" alt="arrow" class="arrow rotate-180">
+              <img
+                :src="getImage('arrow')"
+                alt="arrow"
+                class="arrow rotate-180"
+              />
             </button>
             <button
               class="px-3 py-1 rounded"
@@ -114,40 +119,57 @@
               :disabled="goodsStore.activePage === goodsStore.totalPages"
               @click="goodsStore.setPage(goodsStore.activePage + 1)"
             >
-              <img :src="getImage('arrow')" alt="arrow" class="arrow">
+              <img :src="getImage('arrow')" alt="arrow" class="arrow" />
             </button>
           </nav>
         </div>
       </div>
     </div>
   </div>
+
+  <modalPopupVue
+    v-model="showModal"
+    :product="userStore.purchase"
+    @success="showSuccessModal = true"
+    @cancel="handleCancel"
+  />
+
+  <modalPopupSuccessVue v-model="showSuccessModal" />
 </template>
 
 <script>
 import Filters from "@/components/CatalogFilters.vue";
 import { useGoodsStore } from "@/stores/goodsStore.js";
+import { useUserStore } from "@/stores/userStore.js";
 import ProductCardVue from "./ProductCard.vue";
-import {useImagesStore} from '@/stores/imagesStore'
+import { useImagesStore } from "@/stores/imagesStore";
+import modalPopupVue from "@/components/modalPopup.vue";
+import modalPopupSuccessVue from "./modalPopupSuccess.vue";
 
 export default {
   data() {
     return {
+      userStore: useUserStore(),
       goodsStore: useGoodsStore(),
       showMobileFilters: false,
       sortType: "popularity",
+      showModal: false,
+      showSuccessModal: false
     };
   },
 
   components: {
     Filters,
     ProductCardVue,
+    modalPopupVue,
+    modalPopupSuccessVue,
   },
 
   computed: {
     getImage() {
       const imagesStore = useImagesStore();
       return imagesStore.getImage;
-    }
+    },
   },
 
   methods: {
@@ -157,6 +179,15 @@ export default {
 
     handleSortChange() {
       this.goodsStore.setSortType(this.sortType);
+    },
+
+    handleSubmit() {
+      // this.showModal = false;
+      this.showSuccessModal = true;
+    },
+
+    handleCancel() {
+      this.showModal = false;
     },
   },
 

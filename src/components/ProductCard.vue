@@ -3,46 +3,47 @@
   <div class="bg-gray-900 rounded-lg overflow-hidden cursor-pointer">
     <div class="relative">
       <img
-        :src="getImage(good.img)"
-        :alt="good.img"
+        :src="getImage(product.img)"
+        :alt="product.img"
         class="w-full h-64 object-cover"
       />
       <div
-        v-if="good.discount != null"
+        v-if="product.discount != null"
         class="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded text-xs font-bold"
       >
-        -{{ good.discount }}
+        -{{ product.discount }}
       </div>
     </div>
     <div class="p-4">
       <p class="text-gray-400 text-sm">
-        {{ good.brand.toUpperCase() }}
+        {{ product.brand.toUpperCase() }}
       </p>
-      <h3 class="font-bold mb-1">{{ good.name }}</h3>
+      <h3 class="font-bold mb-1">{{ product.name }}</h3>
       <div class="flex items-center">
         <span class="text-purple-500 font-bold mr-2"
-          >{{ good.new_price.toLocaleString("ru-RU") }} ₽</span
+          >{{ product.new_price.toLocaleString("ru-RU") }} ₽</span
         >
         <span
-          v-if="good.old_price != null"
+          v-if="product.old_price != null"
           class="text-gray-400 line-through text-sm"
-          >{{ good.old_price.toLocaleString("ru-RU") }} ₽</span
+          >{{ product.old_price.toLocaleString("ru-RU") }} ₽</span
         >
       </div>
 
-      <span class="text-white text-s">Покупок: {{ good.purchases }} </span>
+      <span class="text-white text-s">Покупок: {{ product.purchases }} </span>
 
       <div
         class="flex justify-between text-xs text-gray-300 mb-3 mt-2 bg-gray-800 p-2 rounded-lg"
       >
-        <span>{{ good.season.toUpperCase() }}</span>
-        <span class="font-bold">{{ good.size.toUpperCase() }}</span>
-        <span>{{ good.category.toUpperCase() }}</span>
+        <span>{{ product.season.toUpperCase() }}</span>
+        <span class="font-bold">{{ product.size.toUpperCase() }}</span>
+        <span>{{ product.category.toUpperCase() }}</span>
       </div>
       <!-- Кнопки действий -->
       <div class="grid grid-cols-4 gap-2">
         <button
           class="col-span-2 bg-purple-600 lg:hover:bg-purple-700 max-lg:active:bg-purple-700 py-2 px-2 rounded font-bold transition text-sm"
+          @click="handleClick"
         >
           КУПИТЬ
         </button>
@@ -50,10 +51,12 @@
         <button
           class="p-2 rounded transition flex items-center justify-center button"
           :class="{
-            'bg-blue-800 lg:hover:bg-blue-700 max-lg:active:bg-blue-700': userStore.isCartInclude(good),
-            'bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-gray-700': !userStore.isCartInclude(good),
+            'bg-blue-800 lg:hover:bg-blue-700 max-lg:active:bg-blue-700':
+              userStore.isCartInclude(product),
+            'bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-gray-700':
+              !userStore.isCartInclude(product),
           }"
-          @click="userStore.toggleMoveToCard(good)"
+          @click="userStore.toggleMoveToCard(product)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,10 +77,12 @@
         <button
           class="p-2 rounded transition flex items-center justify-center button"
           :class="{
-            'bg-red-800 lg:hover:bg-red-700 max-lg:active:bg-red-700': userStore.isFavInclude(good),
-            'bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-red-700': !userStore.isFavInclude(good),
+            'bg-red-800 lg:hover:bg-red-700 max-lg:active:bg-red-700':
+              userStore.isFavInclude(product),
+            'bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-red-700':
+              !userStore.isFavInclude(product),
           }"
-          @click="userStore.toggleMoveToFavorite(good)"
+          @click="userStore.toggleMoveToFavorite(product)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -99,6 +104,7 @@
   </div>
 </template>
 
+
 <script>
 import { useUserStore } from "@/stores/userStore.js";
 import { useImagesStore } from "@/stores/imagesStore.js";
@@ -106,12 +112,13 @@ import { useImagesStore } from "@/stores/imagesStore.js";
 export default {
   data() {
     return {
+      showModal: false,
       userStore: useUserStore(),
     };
   },
 
   props: {
-    good: {
+    product: {
       type: Object,
       required: true,
       default: () => {},
@@ -122,6 +129,13 @@ export default {
     getImage() {
       const store = useImagesStore();
       return store.getImage;
+    },
+  },
+
+  methods: {
+    handleClick() {
+      this.userStore.purchase = this.product;
+      this.$emit("buy");
     },
   },
 };
