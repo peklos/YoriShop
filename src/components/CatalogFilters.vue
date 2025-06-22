@@ -106,9 +106,9 @@
               @click="toggleSize(size)"
               class="px-3 py-1 rounded transition-all duration-100 ease-in-out"
               :class="{
-                'bg-purple-700 text-white hover:bg-purple-800':
+                'bg-purple-700 text-white lg:hover:bg-purple-800 max-lg:active:bg-purple-800':
                   tempFilters.selectedSizes.includes(size),
-                'bg-gray-800 text-white hover:bg-purple-900':
+                'bg-gray-800 text-white lg:hover:bg-purple-900 max-lg:active:bg-purple-900':
                   !tempFilters.selectedSizes.includes(size),
               }"
             >

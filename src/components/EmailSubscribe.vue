@@ -13,7 +13,7 @@
             class="flex-grow px-4 py-3 bg-gray-700 text-white border-none focus:outline-none rounded sm:rounded-r-none"
           />
           <button
-            class="bg-purple-600 text-white px-6 py-3 font-bold hover:bg-purple-700 transition whitespace-nowrap rounded sm:rounded-l-none"
+            class="bg-purple-600 text-white px-6 py-3 font-bold lg:hover:bg-purple-700 max-lg:active:bg-purple-700 transition whitespace-nowrap rounded sm:rounded-l-none"
             @click="thankYouForYourAttention()"
           >
             ОТПРАВИТЬ

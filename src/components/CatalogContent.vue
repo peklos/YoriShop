@@ -91,7 +91,7 @@
         <div class="flex justify-center mt-12" v-if="goodsStore.totalPages > 1">
           <nav class="flex items-center space-x-2">
             <button
-              class="p-1 rounded bg-gray-800 hover:bg-gray-700 disabled:bg-gray-900 w-8 h-8"
+              class="p-1 rounded bg-gray-800 lg:hover:enabled:bg-gray-700 max-lg:active:enabled:bg-gray-700 disabled:bg-gray-900 w-8 h-8"
               :disabled="goodsStore.activePage === 1"
               @click="goodsStore.setPage(goodsStore.activePage - 1)"
             >
@@ -110,7 +110,7 @@
               {{ page }}
             </button>
             <button
-              class="p-1 rounded bg-gray-800 hover:bg-gray-700 disabled:bg-gray-900 w-8 h-8"
+              class="p-1 rounded bg-gray-800 lg:hover:enabled:bg-gray-700 max-lg:active:enabled:bg-gray-700 disabled:bg-gray-900 w-8 h-8"
               :disabled="goodsStore.activePage === goodsStore.totalPages"
               @click="goodsStore.setPage(goodsStore.activePage + 1)"
             >

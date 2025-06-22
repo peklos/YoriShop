@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 hover:scale-105"
+    class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 lg:hover:scale-105"
     @click="$emit('click')"
   >
     <div class="relative h-48 overflow-hidden">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="p-6">
-      <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition">
+      <h3 class="text-xl font-bold mb-2 lg:group-hover:text-purple-400 transition">
         {{ brand }}
       </h3>
       <p class="text-gray-400 text-sm">{{ description }}</p>

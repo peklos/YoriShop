@@ -42,7 +42,7 @@
       <!-- Кнопки действий -->
       <div class="grid grid-cols-4 gap-2">
         <button
-          class="col-span-2 bg-purple-600 hover:bg-purple-700 py-2 px-2 rounded font-bold transition text-sm"
+          class="col-span-2 bg-purple-600 lg:hover:bg-purple-700 max-lg:active:bg-purple-700 py-2 px-2 rounded font-bold transition text-sm"
         >
           КУПИТЬ
         </button>
@@ -50,8 +50,8 @@
         <button
           class="p-2 rounded transition flex items-center justify-center button"
           :class="{
-            'bg-blue-800 hover:bg-blue-700': userStore.isCartInclude(good),
-            'bg-gray-800 hover:bg-gray-700': !userStore.isCartInclude(good),
+            'bg-blue-800 lg:hover:bg-blue-700 max-lg:active:bg-blue-700': userStore.isCartInclude(good),
+            'bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-gray-700': !userStore.isCartInclude(good),
           }"
           @click="userStore.toggleMoveToCard(good)"
         >
@@ -74,8 +74,8 @@
         <button
           class="p-2 rounded transition flex items-center justify-center button"
           :class="{
-            'bg-red-800 hover:bg-red-700': userStore.isFavInclude(good),
-            'bg-gray-800 hover:bg-gray-700': !userStore.isFavInclude(good),
+            'bg-red-800 lg:hover:bg-red-700 max-lg:active:bg-red-700': userStore.isFavInclude(good),
+            'bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-red-700': !userStore.isFavInclude(good),
           }"
           @click="userStore.toggleMoveToFavorite(good)"
         >

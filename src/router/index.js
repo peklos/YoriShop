@@ -1,35 +1,29 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import Home from "@/views/HomeMain.vue";
-import Catalog from "@/views/CatalogMain.vue";
-import Brands from "@/views/BrandsMain.vue";
-import AboutUs from "@/views/AboutUsMain.vue";
-import Cart from "@/views/CartMain.vue";
-
 const routes = [
   { 
     path: "/", 
     name: "Home", 
-    component: Home },
+    component: () => import('@/views/HomeMain.vue') },
   {
     path: "/catalog",
     name: "Catalog",
-    component: Catalog,
+    component: () => import('@/views/CatalogMain.vue'),
   },
   {
     path: "/brands",
     name: "Brands",
-    component: Brands,
+    component: () => import('@/views/BrandsMain.vue'),
   },
   {
     path: "/about",
     name: "AboutUs",
-    component: AboutUs,
+    component: () => import('@/views/AboutUsMain.vue'),
   },
   {
     path: "/Cart",
     name: "Cart",
-    component: Cart,
+    component: () => import('@/views/CartMain.vue'),
   },
 ];
 

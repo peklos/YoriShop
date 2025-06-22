@@ -52,7 +52,7 @@
               <span class="text-2xl font-medium text-gray-500"
                 >Корзина пуста</span
               >
-              <span class="text-gray-400"
+              <span class="text-gray-400 text-center"
                 >Ваши новые кроссовки ждут вас в каталоге</span
               >
             </div>
@@ -96,7 +96,7 @@
                 <div class="flex items-center justify-between mt-auto">
                   <div class="flex items-center border border-gray-700 rounded">
                     <button
-                      class="px-3 py-1 text-lg hover:bg-gray-700 transition-all duration-100"
+                      class="px-3 py-1 text-lg lg:hover:bg-gray-700 max-lg:active:bg-gray-700 transition-all duration-100"
                       @click="
                         product.sum > 1
                           ? (product.sum -= 1)
@@ -107,7 +107,7 @@
                     </button>
                     <span class="px-3">{{ product.sum }}</span>
                     <button
-                      class="px-3 py-1 text-lg hover:bg-gray-700 transition-all duration-100"
+                      class="px-3 py-1 text-lg lg:hover:bg-gray-700 max-lg:active:bg-gray-700 transition-all duration-100"
                       @click="product.sum += 1"
                     >
                       +
@@ -154,7 +154,7 @@
             </div>
 
             <button
-              class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded font-bold transition mb-4"
+              class="w-full bg-purple-600 lg:hover:bg-purple-700 max-lg:active:bg-purple-700 py-3 rounded font-bold transition mb-4"
             >
               ПЕРЕЙТИ К ОПЛАТЕ
             </button>
@@ -191,7 +191,7 @@
               <span class="text-2xl font-medium text-gray-500"
                 >Избранных нет</span
               >
-              <span class="text-gray-400"
+              <span class="text-gray-400 text-center"
                 >Рекомендуем ознакомиться с новинками в каталоге</span
               >
             </div>
@@ -233,10 +233,11 @@
                 {{ product.new_price.toLocaleString("ru-RU") }} ₽
               </p>
               <button
-                class="w-full mt-3 bg-gray-800 hover:bg-gray-700 py-2 text-sm rounded transition"
+                class="w-full mt-3 bg-gray-800 lg:hover:bg-gray-700 max-lg:active:bg-gray-700 py-2 text-sm rounded transition"
                 @click="userStore.toggleMoveToCard(product)"
               >
-                В КОРЗИНУ
+                <span v-if="!userStore.isCartInclude(product)">В КОРЗИНУ</span>
+                <span v-if="userStore.isCartInclude(product)">УБРАТЬ ИЗ КОРЗИНЫ</span>
               </button>
             </div>
           </div>
@@ -281,7 +282,7 @@ export default {
       if (this.orderCost >= 15000) {
         return this.orderCost;
       } else if (this.orderCost == 0) {
-        return 0
+        return 0;
       } else {
         return this.orderCost + 2000;
       }

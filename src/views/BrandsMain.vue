@@ -93,10 +93,10 @@
               @click="goToBrand(brand)"
             >
               <div
-                class="bg-gray-900 rounded-lg p-6 h-full flex items-center justify-center transition-all duration-300 group-hover:bg-purple-900/30"
+                class="bg-gray-900 rounded-lg p-6 h-full flex items-center justify-center transition-all duration-300 lg:group-hover:bg-purple-900/30"
               >
                 <h3
-                  class="text-xl font-medium text-center group-hover:text-purple-400"
+                  class="text-xl font-medium text-center lg:group-hover:text-purple-400"
                 >
                   {{ brand }}
                 </h3>
@@ -112,7 +112,7 @@
             узнавать о новых поступлениях.
           </p>
           <button
-            class="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full font-bold transition"
+            class="bg-purple-600 lg:hover:bg-purple-700 max-lg:active:bg-purple-700 px-8 py-3 rounded-full font-bold transition"
             @click="THXFORATTENTION()"
           >
             УЗНАТЬ О НОВЫХ ПОСТУПЛЕНИЯХ
