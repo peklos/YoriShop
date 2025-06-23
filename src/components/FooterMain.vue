@@ -24,7 +24,7 @@
 
       <!-- Копирайт -->
       <div class="text-center text-gray-500 text-sm">
-        &copy; {{ new Date().getFullYear() }} MyStore. All rights reserved.
+        &copy; {{ new Date().getFullYear() }} YoriShop. All rights reserved.
       </div>
     </div>
   </footer>
