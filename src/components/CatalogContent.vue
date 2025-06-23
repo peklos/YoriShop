@@ -131,7 +131,7 @@
     v-model="showModal"
     :product="userStore.purchase"
     @success="showSuccessModal = true"
-    @cancel="handleCancel"
+    @cancel="showModal = false"
   />
 
   <modalPopupSuccessVue v-model="showSuccessModal" />
@@ -179,15 +179,6 @@ export default {
 
     handleSortChange() {
       this.goodsStore.setSortType(this.sortType);
-    },
-
-    handleSubmit() {
-      // this.showModal = false;
-      this.showSuccessModal = true;
-    },
-
-    handleCancel() {
-      this.showModal = false;
     },
   },
 

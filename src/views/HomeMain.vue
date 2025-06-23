@@ -196,6 +196,7 @@
       <modalPopupVue
         v-model="showModal"
         :product="{ name: 'VETEMENTS × TNF', img: 'vetmotnf', new_price: 49999, brand: 'VETEMENTS, TNF', category: 'Верх', size: 'EXCLUSIVE ALL'}"
+        :goods="[]"
         @success="showSuccessModal = true"
         @cancel="showModal = false"
       />

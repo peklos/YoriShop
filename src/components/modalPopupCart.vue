@@ -56,7 +56,11 @@
         <!-- Основное содержимое -->
         <div class="px-6 py-4">
           <!-- Информация о товаре -->
-          <div class="flex gap-4 mb-6 p-4 bg-gray-900/50 rounded-lg">
+          <div
+            class="flex gap-4 mb-6 p-4 bg-gray-900/50 rounded-lg"
+            v-for="product in userStore.cart"
+            :key="product.id"
+          >
             <div class="w-24 h-24 flex-shrink-0">
               <img
                 :src="getImage(product.img)"
@@ -75,18 +79,13 @@
               <p class="text-gray-400 text-sm" v-if="product.size">
                 Размер: {{ product.size }}
               </p>
+              <p class="text-gray-400 text-sm" v-if="product.size">
+                Количество: {{ product.sum }}
+              </p>
               <div class="mt-1">
                 <span class="font-bold"
                   >{{ product.new_price.toLocaleString("ru-RU") }} ₽</span
                 >
-                <p class="text-xs text-gray-400">
-                  Доставка:
-                  {{
-                    deliveryCost === 0
-                      ? "Бесплатно"
-                      : `${deliveryCost.toLocaleString("ru-RU")} ₽`
-                  }}
-                </p>
               </div>
             </div>
           </div>
@@ -94,7 +93,7 @@
           <!-- Форма оформления -->
           <div class="space-y-4">
             <div v-if="errorMessage.length > 0" class="text-center">
-              <span class="bg-white text-red-500 rounded-lg font-bold p-1">{{
+              <span class="bg-white text-red-500 rounded-lg font-bold py-1 px-4">{{
                 errorMessage
               }}</span>
             </div>
@@ -129,10 +128,18 @@
             </div>
 
             <div class="pt-2 text-sm text-gray-400">
+              <p class="text-gray-400">
+                Доставка:
+                <span class="font-bold text-white">{{
+                  deliveryCost === 0
+                    ? "Бесплатно"
+                    : `${deliveryCost.toLocaleString("ru-RU")} ₽`
+                }}</span>
+              </p>
               <p>
                 Итого к оплате:
                 <span class="font-bold text-white"
-                  >{{ totalPrice.toLocaleString("ru-RU") }} ₽</span
+                  >{{ finalOrderCost.toLocaleString("ru-RU") }} ₽</span
                 >
               </p>
               <p class="mt-1">
@@ -177,17 +184,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    product: {
-      type: Object,
+    goods: {
+      type: Array,
       required: true,
-      default: () => ({
-        name: "Товар",
-        img: "",
-        new_price: 0,
-        brand: "",
-        category: "",
-        size: "",
-      }),
+      default: () => [],
     },
   },
   data() {
@@ -204,15 +204,19 @@ export default {
     };
   },
   computed: {
+    finalOrderCost() {
+      if (this.userStore.orderCost >= 15000) {
+        return this.userStore.orderCost;
+      }  else {
+        return this.userStore.orderCost + 2000;
+      }
+    },
     getImage() {
       const store = useImagesStore();
       return store.getImage;
     },
     deliveryCost() {
-      return this.product.new_price >= 15000 ? 0 : 2000;
-    },
-    totalPrice() {
-      return this.product.new_price + this.deliveryCost;
+      return this.finalOrderCost >= 15000 ? 0 : 2000;
     },
   },
   methods: {
@@ -235,6 +239,7 @@ export default {
       this.isVisible = false;
       this.$emit("update:modelValue", false);
       this.$emit("cancel");
+      this.errorMessage = "";
     },
     submitForm() {
       this.isVisible = false;

@@ -78,8 +78,10 @@ export default {
       this.isVisible = newVal;
       if (newVal) {
         this.mountComponent();
+        document.body.style.overflow = 'hidden';
       } else {
         this.isMounted = false;
+        document.body.style.overflow = '';
       }
     },
   },
@@ -87,7 +89,11 @@ export default {
   mounted() {
     if (this.modelValue) {
       this.mountComponent();
+      document.body.style.overflow = 'hidden'
     }
   },
+  unmounted() {
+    document.body.style.overflow = ''
+  }
 };
 </script>

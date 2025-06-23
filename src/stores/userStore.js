@@ -12,6 +12,20 @@ export const useUserStore = defineStore("user", {
     };
   },
   actions: {
+    productSumDecrease(product) {
+      if (product.sum > 1) {
+        product.sum -= 1;
+        this.saveToLocalStorege("userCart", this.cart);
+      } else {
+        this.toggleMoveToCard(product);
+      }
+    },
+
+    productSumIncrease(product) {
+      product.sum += 1;
+      this.saveToLocalStorege("userCart", this.cart);
+    },
+
     toggleMoveToCard(product) {
       if (!this.isCartInclude(product)) {
         this.cart.push({ ...product, sum: 1 });
@@ -39,8 +53,17 @@ export const useUserStore = defineStore("user", {
     saveToLocalStorege(key, data) {
       localStorage.setItem(key, JSON.stringify(data));
     },
+    getCurrentPrice(product) {
+      return product.new_price * product.sum;
+    },
   },
+
   getters: {
+    orderCost() {
+      return this.cart.reduce((total, product) => {
+        return total + this.getCurrentPrice(product);
+      }, 0);
+    },
     isCartInclude: (state) => (product) => {
       return state.cart.some((item) => item.id === product.id);
     },
