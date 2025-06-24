@@ -93,7 +93,7 @@
           <!-- Форма оформления -->
           <div class="space-y-4">
             <div v-if="errorMessage.length > 0" class="text-center">
-              <span class="bg-white text-red-500 rounded-lg font-bold py-1 px-4">{{
+              <span class="bg-white text-red-500 rounded-lg font-bold py-1 md:px-4">{{
                 errorMessage
               }}</span>
             </div>

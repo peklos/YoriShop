@@ -94,7 +94,7 @@
           <!-- Форма оформления -->
           <div class="space-y-4">
             <div v-if="errorMessage.length > 0" class="text-center">
-              <span class="bg-white text-red-500 rounded-lg font-bold p-1">{{
+              <span class="bg-white text-red-500 rounded-lg font-bold py-1 md:px-4">{{
                 errorMessage
               }}</span>
             </div>
@@ -235,6 +235,7 @@ export default {
       this.isVisible = false;
       this.$emit("update:modelValue", false);
       this.$emit("cancel");
+      this.errorMessage = '';
     },
     submitForm() {
       this.isVisible = false;
