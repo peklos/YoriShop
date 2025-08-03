@@ -27,10 +27,12 @@
       <Filters
         :isVisible="showMobileFilters"
         @close="showMobileFilters = false"
+        @mobileTrue="console.log('mobile')"
+        @mobileFalse="console.log('pc')"
       />
 
       <!-- Основная часть с товарами -->
-      <div class="w-full md:w-3/4 lg:w-4/5">
+      <div class="w-full md:w-3/4 lg:w-4/5" v-if="!showMobileFilters">
         <!-- Заголовок и сортировка -->
         <div
           class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8"

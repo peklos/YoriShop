@@ -2,8 +2,7 @@
   <transition name="slide-fade">
     <div
       v-if="isVisible || !isMobile"
-      class="fixed md:static top-0 left-0 right-0 md:inset-auto z-50 md:z-auto bg-black md:bg-transparent overflow-y-auto md:overflow-visible"
-      :style="isMobile ? { height: mobileViewportHeight + 'px' } : {}"
+      class="fixed md:static inset-0 md:inset-auto z-50 md:z-auto bg-black md:bg-transparent overflow-y-auto md:overflow-visible"
     >
       <div
         class="md:hidden fixed top-0 left-0 right-0 bg-black p-4 flex justify-between items-center border-b border-gray-800"
@@ -187,7 +186,6 @@ export default {
     return {
       showMobileFilters: false,
       isMobile: false,
-      mobileViewportHeight: window.innerHeight,
       filterStore: useFilterStore(),
       goodsStore: useGoodsStore(),
       tempFilters: {
@@ -207,7 +205,7 @@ export default {
     },
   },
 
-  emits: ["close", "apply"],
+  emits: ["close", "apply", "mobileTrue", "mobileFalse"],
   components: {
     Disclosure,
     DisclosureButton,
@@ -216,7 +214,6 @@ export default {
 
   mounted() {
     this.checkMobile();
-    this.setMobileHeight();
     window.addEventListener("resize", this.checkMobile);
   },
 
@@ -247,16 +244,17 @@ export default {
   },
 
   methods: {
-    setMobileHeight() {
-      this.mobileViewportHeight = window.innerHeight;
-    },
-
     toggleMobileFilters() {
       this.showMobileFilters = !this.showMobileFilters;
     },
 
     checkMobile() {
       this.isMobile = window.innerWidth < 768; // 768px - breakpoint md в Tailwind
+      if (this.isMobile) {
+        this.$emit('mobileTrue')
+      } else {
+        this.$emit('mobileFalse')
+      }
     },
 
     applyFilters() {
