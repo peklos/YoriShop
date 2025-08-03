@@ -7,7 +7,7 @@
       <div
         class="md:hidden fixed top-0 left-0 right-0 bg-black p-4 flex justify-between items-center border-b border-gray-800"
       >
-        <h3 class="text-xl font-bold">ФИЛЬТРЫ</h3>
+        <h3 class="text-xl font-bold">ФИЛЬТРЫaaaa</h3>
         <button @click="$emit('close')" class="text-2xl">&times;</button>
       </div>
 
@@ -249,7 +249,7 @@ export default {
     },
 
     checkMobile() {
-      this.isMobile = window.innerWidth < 768; // 768px - breakpoint md в Tailwind
+      this.isMobile = window.innerWidth < 768; // 768px - breakpoint md в Tailwind}
     },
 
     applyFilters() {
