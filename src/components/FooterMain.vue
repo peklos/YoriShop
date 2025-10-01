@@ -45,7 +45,7 @@ const menuItems = [
 
 const icons = [
   { name: "vk", url: "https://vk.com/peklos" },
-  { name: "tg", url: "https://t.me/asdasd666asd" },
+  { name: "tg", url: "https://t.me/swslt1984" },
   { name: "gh", url: "https://github.com/peklos" },
 ];
 </script>
