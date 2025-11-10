@@ -128,7 +128,7 @@ YoriShop/
 
 ## 👨‍💻 Разработчик
 
-**Telegram:** [@swslt1984](https://t.me/swslt1984)
+**Telegram:** [@swslt1616](https://t.me/swslt1616)
 
 ## 📝 Лицензия
 
